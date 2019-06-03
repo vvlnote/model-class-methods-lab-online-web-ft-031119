@@ -38,6 +38,6 @@ class Boat < ActiveRecord::Base
   end
 
   def self.with_three_classifications
-    self.all.map {|b| b.classifications.size == 3}
+    self.all.select {|b| b.classifications.size == 3}
   end
 end
