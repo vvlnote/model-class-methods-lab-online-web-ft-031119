@@ -21,20 +21,22 @@ class Boat < ActiveRecord::Base
   end
 
   def self.without_a_captain
-    self.all.select{|b| b.captain_id == nil}
+    #self.all.select{|b| b.captain_id == nil}
+    where(captain_id: nil)
   end
 
   def self.sailboats
-    sailboats = []
-    self.all.each do |b|
-      b.classifications.each do |c|
-        if c.name == "Sailboat"
-          sailboats << b
-          break
-        end
-      end
-    end
-    sailboats
+    #sailboats = []
+    #self.all.each do |b|
+    #  b.classifications.each do |c|
+    #    if c.name == "Sailboat"
+    #      sailboats << b
+    #      break
+    #    end
+    #  end
+    #end
+    #sailboats
+    includes(:classifications).where(classifications: {name: "Sailboat"})
   end
 
   def self.with_three_classifications
