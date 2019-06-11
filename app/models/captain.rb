@@ -2,6 +2,7 @@ class Captain < ActiveRecord::Base
   has_many :boats
 
   def self.catamaran_operators
+<<<<<<< HEAD
     find_captains ("Catamaran")
   end
 
@@ -37,19 +38,30 @@ class Captain < ActiveRecord::Base
 
   private
   def self.find_captains (boat_type)
+=======
+>>>>>>> dcb88b831d7c469f1c9f74dc0130c2de99cfeeaf
     captains = []
     self.all.each do |captain|
       captain.boats.each do |b|
         b.classifications.each do |c|
+<<<<<<< HEAD
           #binding.pry
           if c.name == boat_type
             #binding.pry
+=======
+          binding.pry
+          if c.name == "Catamaram"
+>>>>>>> dcb88b831d7c469f1c9f74dc0130c2de99cfeeaf
             captains << captain
             break
           end
         end
       end
     end
+<<<<<<< HEAD
     captains.uniq
+=======
+    captains
+>>>>>>> dcb88b831d7c469f1c9f74dc0130c2de99cfeeaf
   end
 end
